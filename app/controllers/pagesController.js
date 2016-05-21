@@ -8,4 +8,8 @@ pagesController.main = function () {
   this.render()
 }
 
+pagesController.login = function () {
+  this.title = 'Login'
+  this.render()
+}
 module.exports = pagesController

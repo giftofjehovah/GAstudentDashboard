@@ -7,4 +7,5 @@
 // information.
 module.exports = function routes () {
   this.root('pages#main')
+  this.match('/login', 'pages#login')
 }

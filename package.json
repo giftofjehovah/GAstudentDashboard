@@ -3,14 +3,26 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "locomotive": "0.4.x",
     "bootable": "0.2.x",
     "bootable-environment": "0.2.x",
-    "express": "3.x.x",
+    "bulma": "0.0.26",
     "connect-powered-by": "0.1.x",
-    "ejs": "0.8.x"
+    "ejs": "0.8.x",
+    "express": "3.x.x",
+    "locomotive": "0.4.x",
+    "locomotive-mongoose": "^0.1.0",
+    "mongoose": "^4.4.17",
+    "passport": "^0.3.2",
+    "passport-github": "^1.1.0",
+    "passport-local": "^1.0.0"
   },
   "scripts": {
     "start": "node server.js"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-sass": "^2.3.1",
+    "sass-loader": "^3.2.0"
   }
 }
