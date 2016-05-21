@@ -14,6 +14,7 @@ pagesController.main = function () {
 }
 
 pagesController.login = function () {
+  this.errorMsg = this.req.flash('errorMessage')
   this.render()
 }
 
