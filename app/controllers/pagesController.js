@@ -1,5 +1,6 @@
 var locomotive = require('locomotive')
 var Controller = locomotive.Controller
+var Language = require('../models/language')
 
 var pagesController = new Controller()
 
@@ -24,7 +25,9 @@ pagesController.signup = function () {
 }
 
 pagesController.dashboard = function (data) {
-  console.log(this.req.user)
+  var language = this.req.user.languages.toJSON()
+  this.user = this.req.user
+  this.languages = language
   this.render()
 }
 

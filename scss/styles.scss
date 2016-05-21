@@ -1,1 +1,12 @@
+.specialInput {
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: center;
+}
+.specialInput:disabled {
+  background: transparent;
+  border: none;
+}
+
 @import "node_modules/bulma/bulma.sass"

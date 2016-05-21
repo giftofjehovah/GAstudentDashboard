@@ -12,6 +12,7 @@
     "ejs": "0.8.x",
     "express": "3.x.x",
     "express-session": "^1.13.0",
+    "jquery": "^2.2.4",
     "locomotive": "0.4.x",
     "locomotive-mongoose": "^0.1.0",
     "mongoose": "^4.4.17",

@@ -29,6 +29,7 @@ module.exports = function () {
         newUser.email = email
         newUser.password = User.encrypt(password)
         newUser.role = 'student'
+        newUser.languages = {}
 
         newUser.save(function (err, user) {
           if (err) return done(err)

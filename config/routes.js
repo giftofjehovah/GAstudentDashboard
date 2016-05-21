@@ -11,5 +11,6 @@ module.exports = function routes () {
   this.match('/signup', 'pages#signup')
   this.match('/dashboard', 'pages#dashboard')
   this.match('/login', 'auth#login', {via: 'POST'})
+  this.match('/editLanguage', 'users#editLanguage', {via: 'POST'})
   this.resources('users', {only: ['index', 'create', 'show']})
 }
