@@ -4,6 +4,15 @@ const LocalStrategy = require('passport-local').Strategy
 // const GitHubStrategy = require('passport-github').Strategy
 
 module.exports = function () {
+  passport.serializeUser(function (user, done) {
+    done(null, user.id)
+  })
+  passport.deserializeUser(function (id, done) {
+    User.findById(id, function (err, user) {
+      done(err, user)
+    })
+  })
+
   passport.use('local-signup', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
@@ -15,8 +24,11 @@ module.exports = function () {
         return done(null, false, req.flash('errorMessage', 'This email is already used!'))
       } else {
         var newUser = new User()
+        newUser.firstName = req.body.firstName
+        newUser.lastName = req.body.lastName
         newUser.email = email
-        newUser.local.password = User.encrypt(password)
+        newUser.password = User.encrypt(password)
+        newUser.role = 'student'
 
         newUser.save(function (err, user) {
           if (err) return done(err)

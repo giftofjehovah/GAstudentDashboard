@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Login</title>
+    <title>Sign Up</title>
     <link rel="stylesheet" href="/stylesheets/screen.css" />
     <link rel="stylesheet" href="/stylesheets/styles.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -24,19 +24,26 @@
           <div class="column"></div>
           <div class="column is-half">
             <div class="box is-medium">
-              <h1 class='title'>Login</h1>
-              <h3 class="subtitle">Please sign in to access your account</h3>
-              <p class="control has-icon">
-                <input class="input" type="email" placeholder="Email">
-                <i class="fa fa-envelope"></i>
-              </p>
-              <p class="control has-icon">
-                <input class="input" type="password" placeholder="Password">
-                <i class="fa fa-lock"></i>
-              </p>
-              <p class="control">
-                <button class="button is-success is-outlined is-fullwidth">Login</button>
-              </p>
+              <h1 class='title'>Sign Up</h1>
+              <h3 class="subtitle">Please enter all details to sign up for an account</h3>
+              <%= errorMsg %>
+              <form action='/users' method="post">
+                <div class="control is-grouped">
+                  <input class="input" name='firstName' type="text" placeholder="First Name">
+                  <input class="input" name='lastName' type="text" placeholder="Last Name">
+                </div>
+                <p class="control has-icon">
+                  <input class="input" name='email' type="email" placeholder="Email">
+                  <i class="fa fa-envelope"></i>
+                </p>
+                <p class="control has-icon">
+                  <input class="input" name='password' type="password" placeholder="Password">
+                  <i class="fa fa-lock"></i>
+                </p>
+                <p class="control">
+                  <button class="button is-success is-outlined is-fullwidth">Sign Up</button>
+                </p>
+              </form>
             </div>
           </div>
           <div class="column"></div>
