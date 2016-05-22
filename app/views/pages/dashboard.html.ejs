@@ -94,10 +94,70 @@
             </div>
             <div class="tile is-ancestor">
               <div class="tile is-parent">
-                <div class="tile is-child box">Not Yet Grasped</div>
+                <div class="tile is-child box">
+                  <div class="hero-head">
+                    <div class="title is-5">Not Yet Grasped</div>
+                    <p class="control has-addons">
+                      <span class="select">
+                        <select id='topicLanguages'>
+                          <% Object.keys(languages).forEach(function(prop) { %>
+                          <option value="<%=prop%>"><%=prop%></option>
+                          <% }) %>
+                        </select>
+                      </span>
+                      <input id='topicText' class="input" type="text" placeholder="Add a topic">
+                      <a id='topicButton' class="button is-info">Add</a>
+                    </p>
+                  </div>
+                  <div class="hero-body">
+                    <nav class="panel">
+                      <p class="panel-heading">Topics</p>
+                      <p class="panel-tabs">
+                        <a class="is-active" href="#">All</a>
+                        <a href="#">JS</a>
+                        <a href="#">HTML</a>
+                        <a href="#">Ruby</a>
+                        <a href="#">NodeJs</a>
+                      </p>
+                      <div class="panel-block">
+                        <p class="control">
+                          <label class="checkbox"><input type="checkbox">Closure</label>
+                        </p>
+                      </div>
+                      <div class="panel-block">
+                        <p class="control">
+                          <label class="checkbox"><input type="checkbox" checked>Callback</label>
+                        </p>
+                      </div>
+                      <div class="panel-block">
+                        <p class="control">
+                          <label class="checkbox"><input type="checkbox">Loop</label>
+                        </p>
+                      </div>
+                      <div class="panel-block">
+                        <p class="control">
+                          <label class="checkbox"><input type="checkbox">Function</label>
+                        </p>
+                      </div>
+                      <div class="panel-block">
+                        <p class="control">
+                          <label class="checkbox"><input type="checkbox">Animations</label>
+                        </p>
+                      </div>
+                    </nav>
+                  </div>
+                </div>
               </div>
               <div class="tile is-parent">
-                <div class="tile is-child box">How can instructional team improve?</div>
+                <div class="tile is-child box">
+                  <div class="title is-5">How can instructional team improve?</div>
+                  <div class="control">
+                    <textarea class="textarea" placeholder="Explain how we can help you"></textarea>
+                  </div>
+                  <p class="control">
+                    <button class="button is-primary">Submit</button>
+                  </p>
+                </div>
               </div>
             </div>
           </div>

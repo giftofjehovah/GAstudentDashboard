@@ -22,9 +22,20 @@ usersController.editLanguage = function () {
   User.findById(data.userId, (err, user) => {
     if (err) throw err
     user.languages[data.language] = data.amount
+    user.markModified('languages')
     user.save((err, user) => {
       if (err) throw err
       this.res.json({user: user})
+    })
+  })
+}
+
+usersController.addTopicNotGrasp = function () {
+  var data = this.param('data')
+  User.findById(data.userId, (err, user) => {
+    if (err) throw err
+    user.addTopicNotGrasp(data, (topic) => {
+      this.res.json({user: topic})
     })
   })
 }

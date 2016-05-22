@@ -25,10 +25,17 @@ pagesController.signup = function () {
 }
 
 pagesController.dashboard = function (data) {
-  var language = this.req.user.languages.toJSON()
+  var language
   this.user = this.req.user
-  this.languages = language
-  this.render()
+  Language.find({}, (err, languages) => {
+    if (err) throw err
+    this.req.user.checkLanguage(languages, (user) => {
+      console.log(user.languages)
+      language = user.languages
+      this.languages = language
+      this.render()
+    })
+  })
 }
 
 module.exports = pagesController
