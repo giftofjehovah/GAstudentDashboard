@@ -6,7 +6,7 @@ module.exports = function () {
       mongoose.connect('mongodb://localhost:27017/studentDashboard')
       break
     case 'production':
-      mongoose.connect(process.env.MONGOLAB_URI)
+      mongoose.connect(process.env.MONGODB_URI)
       break
   }
 }
