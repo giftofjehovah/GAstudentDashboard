@@ -2,6 +2,7 @@ var locomotive = require('locomotive')
 var Controller = locomotive.Controller
 var passport = require('passport')
 var User = require('../models/user')
+var Feedback = require('../models/feedback')
 
 var usersController = new Controller()
 
@@ -15,6 +16,16 @@ usersController.before('create', passport.authenticate('local-signup', {failureR
 
 usersController.create = function () {
 
+}
+
+usersController.feedback = function () {
+  var feedback = new Feedback()
+  feedback.student = this.req.user.firstName + ' ' + this.req.user.lastName
+  feedback.feedback = this.param('feedback')
+  feedback.save((err) => {
+    if (err) throw err
+    this.redirect('/dashboard')
+  })
 }
 
 usersController.toggleTopic = function () {

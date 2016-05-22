@@ -151,12 +151,14 @@
               <div class="tile is-parent">
                 <div class="tile is-child box">
                   <div class="title is-5">How can instructional team improve?</div>
-                  <div class="control">
-                    <textarea class="textarea" placeholder="Explain how we can help you"></textarea>
-                  </div>
-                  <p class="control">
-                    <button class="button is-primary">Submit</button>
-                  </p>
+                  <form action="/feedback" method="POST">
+                    <div class="control">
+                      <textarea id='feedback' name='feedback' class="textarea" placeholder="how we can help you learn better?"></textarea>
+                    </div>
+                    <p class="control">
+                      <button id='feedbackButton' class="button is-primary">Submit</button>
+                    </p>
+                  </form>
                 </div>
               </div>
             </div>

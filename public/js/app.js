@@ -2,6 +2,13 @@ $('.editButton').on('click', editButton)
 $('#topicButton').on('click', topicButton)
 $('.topicButton').on('click', switchPanel)
 $('.checkTopic').change(checkBoxChange)
+$('#feedbackButton').on('click', sendFeedback)
+
+function sendFeedback (event) {
+  if($('#feedback').val() === '') {
+    event.preventDefault()
+  }
+}
 
 function checkBoxChange (event) {
   var userId = $('#userId').val()
@@ -28,6 +35,7 @@ function topicButton (event) {
   var topicLanguage = $('#topicLanguages').val()
   var topicText = $('#topicText').val()
   var userId = $('#userId').val()
+  if (topicText === '') return
   var data = {
     userId: userId,
     topicText: topicText,
@@ -48,6 +56,7 @@ function editButton (event) {
     var value = $('#value' + id).val()
     var text = $('#text' + id).attr('value')
     var userId = $('#userId').val()
+    if(Number(value) > 5) return
     var data = {
       userId : userId,
       language: text,
