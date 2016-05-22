@@ -24,6 +24,7 @@ UserSchema.methods.validPassword = function (password) {
 
 UserSchema.methods.addTopicNotGrasp = function (topic, cb) {
   var tempTopic = {}
+  console.log(topic)
   if (this.topicNotGrasp) {
     if (!this.topicNotGrasp.hasOwnProperty(topic.topicLanguage)) {
       this.topicNotGrasp[topic.topicLanguage] = []

@@ -30,7 +30,6 @@ pagesController.dashboard = function (data) {
   Language.find({}, (err, languages) => {
     if (err) throw err
     this.req.user.checkLanguage(languages, (user) => {
-      console.log(user.languages)
       language = user.languages
       this.languages = language
       this.render()

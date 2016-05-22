@@ -17,6 +17,27 @@ usersController.create = function () {
 
 }
 
+usersController.toggleTopic = function () {
+  var data = this.param('data')
+  User.findById(data.userId, (err, user) => {
+    if (err) throw err
+    user.topicNotGrasp[data.language].forEach((topic) => {
+      if (topic.hasOwnProperty(data.topic)) {
+        if (topic[data.topic] === 'true') {
+          topic[data.topic] = 'false'
+        } else {
+          topic[data.topic] = 'true'
+        }
+        user.markModified('topicNotGrasp')
+      }
+    })
+    user.save((err, user) => {
+      if (err) throw err
+      this.res.json({user: user})
+    })
+  })
+}
+
 usersController.editLanguage = function () {
   var data = this.param('data')
   User.findById(data.userId, (err, user) => {

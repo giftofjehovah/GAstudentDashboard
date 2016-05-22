@@ -113,37 +113,37 @@
                     <nav class="panel">
                       <p class="panel-heading">Topics</p>
                       <p class="panel-tabs">
-                        <a class="is-active" href="#">All</a>
-                        <a href="#">JS</a>
-                        <a href="#">HTML</a>
-                        <a href="#">Ruby</a>
-                        <a href="#">NodeJs</a>
+                        <% if(user.topicNotGrasp) { %>
+                          <% Object.keys(user.topicNotGrasp).forEach(function(key, i) { %>
+                          <%  var active = '' %>
+                          <%  if(i === 0) {active = 'is-active'} %>
+                              <a class='topicButton <%=active%>' id='<%= key %>'><%=key%></a>
+                          <% }) %>
+                        <% } %>
                       </p>
-                      <div class="panel-block">
-                        <p class="control">
-                          <label class="checkbox"><input type="checkbox">Closure</label>
-                        </p>
-                      </div>
-                      <div class="panel-block">
-                        <p class="control">
-                          <label class="checkbox"><input type="checkbox" checked>Callback</label>
-                        </p>
-                      </div>
-                      <div class="panel-block">
-                        <p class="control">
-                          <label class="checkbox"><input type="checkbox">Loop</label>
-                        </p>
-                      </div>
-                      <div class="panel-block">
-                        <p class="control">
-                          <label class="checkbox"><input type="checkbox">Function</label>
-                        </p>
-                      </div>
-                      <div class="panel-block">
-                        <p class="control">
-                          <label class="checkbox"><input type="checkbox">Animations</label>
-                        </p>
-                      </div>
+                      <% if(user.topicNotGrasp) { %>
+                        <% Object.keys(user.topicNotGrasp).forEach(function(key, i) { %>
+                          <%  var hide = '' %>
+                          <%  if(i === 0) { %>
+                          <%  hide = 'showPanel' %>
+                          <input id="currentPanel" type="hidden" value="<%= key %>">
+                        <% } else {hide='hidePanel'}%>
+                        <%  var id = 'panel' + key %>
+                          <div class='topicPanel <%=hide%>' id="<%=id%>">
+                          <%  user.topicNotGrasp[key].forEach(function(topic) { %>
+                            <% var check = '' %>
+                            <% if (topic[Object.keys(topic)[0]] === 'true') { %>
+                                <% check = 'checked' %>
+                            <% } %>
+                              <div class="panel-block">
+                                <p class="control">
+                                  <label class="checkbox"><input class='checkTopic' value='<%= Object.keys(topic)[0] %>' type="checkbox" <%=check%>> <%= Object.keys(topic)[0] %></label>
+                                </p>
+                              </div>
+                          <% }) %>
+                          </div>
+                        <% }) %>
+                      <% } %>
                     </nav>
                   </div>
                 </div>
