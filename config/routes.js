@@ -11,6 +11,7 @@ module.exports = function routes () {
   this.match('/signup', 'pages#signup')
   this.match('/dashboard', 'pages#dashboard')
   this.match('/login', 'auth#login', {via: 'POST'})
+  this.match('/logout', 'auth#logout', {via: 'POST'})
   this.match('/editLanguage', 'users#editLanguage', {via: 'POST'})
   this.match('/topicNotGrasp', 'users#addTopicNotGrasp', {via: 'POST'})
   this.match('/toggleTopic', 'users#toggleTopic', {via: 'POST'})

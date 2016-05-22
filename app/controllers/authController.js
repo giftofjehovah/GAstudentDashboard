@@ -9,7 +9,11 @@ authController.before('login', passport.authenticate('local-login', {failureRedi
                                                                         successRedirect: '/dashboard'}))
 
 authController.login = function () {
-  console.log('hi')
+}
+
+authController.logout = function () {
+  this.req.session.destroy()
+  this.redirect('/login')
 }
 
 module.exports = authController
