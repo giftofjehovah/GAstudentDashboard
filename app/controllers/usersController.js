@@ -38,16 +38,20 @@ usersController.addTopic = function () {
 }
 
 usersController.student = function () {
-  console.log(this.param('id'))
-  User.findById(this.param('id'), (err, user) => {
+  this.role = true
+  Feedback.find({studentId: this.param('id')}, (err, feedbacks) => {
     if (err) throw err
-    var language
-    Language.find({}, (err, languages) => {
+    this.feedbacks = feedbacks
+    User.findById(this.param('id'), (err, user) => {
       if (err) throw err
-      language = user.languages
-      this.languages = language
-      this.user = user
-      this.render('pages/dashboard')
+      var language
+      Language.find({}, (err, languages) => {
+        if (err) throw err
+        language = user.languages
+        this.languages = language
+        this.user = user
+        this.render('pages/dashboard')
+      })
     })
   })
 }
@@ -55,6 +59,7 @@ usersController.student = function () {
 usersController.feedback = function () {
   var feedback = new Feedback()
   feedback.student = this.req.user.firstName + ' ' + this.req.user.lastName
+  feedback.studentId = this.req.user.id
   feedback.feedback = this.param('feedback')
   feedback.save((err) => {
     if (err) throw err

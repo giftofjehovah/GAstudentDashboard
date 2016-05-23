@@ -58,6 +58,7 @@ pagesController.signup = function () {
 
 pagesController.dashboard = function (data) {
   var language
+  this.role = false
   this.user = this.req.user
   Language.find({}, (err, languages) => {
     if (err) throw err
