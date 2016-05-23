@@ -28,7 +28,7 @@ module.exports = function () {
         newUser.lastName = req.body.lastName
         newUser.email = email
         newUser.password = User.encrypt(password)
-        newUser.role = 'student'
+        newUser.role = 'admin'
         newUser.languages = {}
 
         newUser.save(function (err, user) {
