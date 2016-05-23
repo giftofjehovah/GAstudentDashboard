@@ -58,7 +58,7 @@
                   <table class='table is-bordered is-narrow'>
                     <thead>
                       <tr>
-                        <th>Languages Added</th>
+                        <th>Topics Added</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -71,10 +71,12 @@
                   </table>
                 </div>
                 <div class="tile is-child">
-                  <p class="control has-addons">
-                    <input class="input" type="text" placeholder="Add new Language">
-                      <a class="button is-info">Add</a>
-                  </p>
+                  <form action="/addTopic" method="POST">
+                    <p class="control has-addons">
+                      <input class="input" name='newTopic' type="text" placeholder="Add new Topic">
+                        <button class="button is-info">Add</button>
+                    </p>
+                  </form>
                 </div>
               </div>
             </div>

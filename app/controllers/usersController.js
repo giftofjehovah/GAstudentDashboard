@@ -28,6 +28,15 @@ usersController.create = function () {
 
 }
 
+usersController.addTopic = function () {
+  var language = new Language()
+  language.language = this.param('newTopic')
+  language.save((err) => {
+    if (err) throw err
+    this.redirect('admin')
+  })
+}
+
 usersController.student = function () {
   console.log(this.param('id'))
   User.findById(this.param('id'), (err, user) => {
