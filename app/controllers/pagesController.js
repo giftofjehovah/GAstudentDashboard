@@ -10,7 +10,7 @@ pagesController.before('dashboard', function (next) {
     if (this.req.user.role === 'student') {
       return next()
     } else {
-      this.redirect('/admin')
+      return this.redirect('/admin')
     }
   }
   this.redirect('login')
