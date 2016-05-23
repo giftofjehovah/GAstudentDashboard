@@ -24,7 +24,7 @@
               <div class="nav-right nav-menu">
                 <span class="nav-item">
                   <form action="/logout" method="POST">
-                    <button class="button is-primary is-inverted">
+                    <button class="button is-danger is-inverted">
                       <span class="icon">
                         <i class="fa fa-sign-out" aria-hidden="true"></i>
                       </span>
@@ -86,18 +86,32 @@
                       <tr>
                         <th>No.</th>
                         <th>Student</th>
-                        <th>HTML</th>
-                        <th>CSS</th>
-                        <th>JS</th>
+                        <% languages.forEach(function (language) { %>
+                          <th><%=language.language%></th>
+                        <% }) %>
                       </tr>
                     </thead>
                     <tbody>
+                      <% users.forEach(function (user, i) { %>
+                        <td><%= i + 1 %></td>
+                        <td><a href="/student/<%=user.id%>"><%= user.firstName + ' ' + user.lastName %></a></td>
+                        <% Object.keys(user.languages).forEach(function(key){ %>
+                          <% var color = '' %>
+                          <% if (user.languages[key] === '1') { %>
+                          <%   color = 'is-danger' %>
+                          <% } else if (user.languages[key] === '2') { %>
+                          <%   color = 'is-warning' %>
+                          <% } else if (user.languages[key] === '3') { %>
+                          <%   color = 'is-success' %>
+                          <% } else if (user.languages[key] === '4') { %>
+                          <%   color = 'is-info' %>
+                          <% } else if (user.languages[key] === '5') { %>
+                          <%   color = 'is-light' %>
+                          <% } %>
+                          <td><span class="tag <%=color%>"><%= user.languages[key] %></span></td>
+                        <% }) %>
+                      <% }) %>
                       <tr>
-                        <td>1</td>
-                        <td>Jon</td>
-                        <td>5</td>
-                        <td>4</td>
-                        <td>2</td>
                       </tr>
                     </tbody>
                   </table>

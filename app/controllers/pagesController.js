@@ -29,7 +29,7 @@ pagesController.before('admin', function (next) {
 })
 
 pagesController.admin = function () {
-  User.find({}, (err, users) => {
+  User.find({role: 'student'}, (err, users) => {
     if (err) throw err
     this.users = users
     Language.find({}, (err, languages) => {

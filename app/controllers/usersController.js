@@ -3,11 +3,21 @@ var Controller = locomotive.Controller
 var passport = require('passport')
 var User = require('../models/user')
 var Feedback = require('../models/feedback')
+var Language = require('../models/language')
 
 var usersController = new Controller()
 
 usersController.after('*', function (err, req, res, next) {
   this.render('error', { message: err.message })
+})
+
+usersController.before('student', function (next) {
+  if (this.req.user) {
+    if (this.req.user.role === 'admin') {
+      return next()
+    }
+  }
+  this.redirect('login')
 })
 
 usersController.before('create', passport.authenticate('local-signup', {failureRedirect: '/signup',
@@ -16,6 +26,21 @@ usersController.before('create', passport.authenticate('local-signup', {failureR
 
 usersController.create = function () {
 
+}
+
+usersController.student = function () {
+  console.log(this.param('id'))
+  User.findById(this.param('id'), (err, user) => {
+    if (err) throw err
+    var language
+    Language.find({}, (err, languages) => {
+      if (err) throw err
+      language = user.languages
+      this.languages = language
+      this.user = user
+      this.render('pages/dashboard')
+    })
+  })
 }
 
 usersController.feedback = function () {

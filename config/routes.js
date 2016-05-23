@@ -8,6 +8,7 @@
 module.exports = function routes () {
   this.root('pages#main')
   this.match('/admin', 'pages#admin')
+  this.match('/student/:id', 'users#student')
   this.match('/login', 'pages#login')
   this.match('/signup', 'pages#signup')
   this.match('/dashboard', 'pages#dashboard')
